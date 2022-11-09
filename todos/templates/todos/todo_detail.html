@@ -26,12 +26,21 @@
 
 {% block content %}
     <h2>Todo Detail</h2>
+    {% if todo.parent_task %}
+        <hr />
+        <p>Parent Todo: <a href="{% url "todos:detail" pk=todo.parent_task.pk %}">{{ todo.parent_task }}</a></p>
+        <p>Parent Status: {{ todo.parent_task.complete|yesno:"Complete, Not Complete" }}</p>
+    {% endif %}
     <hr />
-    {{ todo.text }}
+    <p>Todo: {{ todo.text }}</p>
+    <p>Status: {{ todo.complete|yesno:"Is Complete, Not Complete" }}</p>
+    <p>Created: {{ todo.created_timestamp }}</p>
+    <p>Last Modified: {{ todo.modified_timestamp }}</p>
     {% if todo.subtasks.all %}
         <hr />
+        <h4>Subtasks</h4>
     {% endif %}
     {% for subtask in todo.subtasks.all %}
-        <p><a href="{% url "todos:detail" pk=subtask.pk %}">{{ subtask }}</a></p>
+        <p><a href="{% url "todos:detail" pk=subtask.pk %}">{{ subtask }}</a>: {{ subtask.complete|yesno:"Complete, Not Complete" }}</p>
     {% endfor %}
 {% endblock %}
