@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # custom
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'todos.apps.TodosConfig',
     # third party
     'allauth',
     'allauth.account',

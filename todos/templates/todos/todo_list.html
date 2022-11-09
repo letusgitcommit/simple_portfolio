@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block base_nav %}
+    <li class="nav-item">
+        <a href="{% url 'pages:home' %}" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'todos:list' %}" class="nav-link active">Todo App</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <h2>Todo List</h2>
+    <hr />
+    {% for todo in todos %}
+        <p><a href="{% url 'todos:detail' pk=todo.pk %}">{{ todo }}</a></p>
+    {% endfor %}
+{% endblock %}
