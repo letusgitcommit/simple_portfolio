@@ -1,8 +1,14 @@
 {% extends '_base.html' %}
 {% load crispy_forms_filters %}
 
+{% block user_auth_nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'account_logout' %}">Log Out</a>
+    </li>
+{% endblock %}
+
 {% block content %}
-    <h1>Are you sure you want to logout?</h1>
+    <h2>Are you sure you want to log out?</h2>
     <hr />
     <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}

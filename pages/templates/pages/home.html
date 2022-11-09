@@ -2,7 +2,28 @@
 
 {% block title %}Home{% endblock %}
 
+{% block base_nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Home</a>
+    </li>
+{% endblock %}
+
 {% block content %}
-    <h1>Hello World</h1>
+    <h2>Welcome!</h2>
+    <p>
+        Thanks for visiting my simple portfolio website. This website is to show off some full-stack development skills
+        that I have picked up so far. If you choose to sign up, you will have access to a simple todo application that I
+        put together. I hope you enjoy seeing everything!
+    </p>
+    <p>
+        This website was built with Django and is being hosted on Heroku. The RDBMS is Postgres.
+    </p>
+    <p>
+        Great thanks to Will Vincent for putting out <em>Django for Professionals</em>, which was a major guide to the
+        beginning of my development journey with Django. Here is a link to his
+        <a href="https://wsvincent.com/">website</a>
+        If you are looking for a guide to full-stack development with Django and Python. I definitely would recommend
+        his Django guides to start with.
+    </p>
 
 {% endblock %}
