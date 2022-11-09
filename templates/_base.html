@@ -16,6 +16,7 @@
         <a href="{% url "account_logout" %}" class="btn btn-primary">Log Out</a>
     {% else %}
         <a href="{% url "account_login" %}" class="btn btn-primary">Log In</a>
+        <a href="{% url "account_signup" %}" class="btn btn-primary">Sign Up</a>
     {% endif %}
     <hr />
     {% block content %}
