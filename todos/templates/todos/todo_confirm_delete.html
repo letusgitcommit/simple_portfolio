@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% block title %}Confirm Delete of Todo{% endblock %}
+
+{% block extra_nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'todos:detail' pk=todo.pk %}">Back to Todo</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <h2>Confirm Delete</h2>
+    <p>Todo to Delete: {{ todo }}</p>
+    <hr />
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    </form>
+{% endblock %}

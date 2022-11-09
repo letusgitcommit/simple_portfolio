@@ -1,6 +1,7 @@
 from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -75,3 +76,11 @@ class SubtaskCreateView(LoginRequiredMixin, generic.CreateView):
         form = super().get_form(form_class)
         form.fields['text'].widget = forms.TextInput()
         return form
+
+
+class TodoDeleteView(LoginRequiredMixin, generic.DeleteView):
+    success_url = reverse_lazy('todos:list')
+    context_object_name = 'todo'
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user)

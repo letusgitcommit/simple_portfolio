@@ -6,6 +6,7 @@ from .views import (
     TodoCreateView,
     TodoUpdateView,
     SubtaskCreateView,
+    TodoDeleteView,
 )
 
 app_name = 'todos'
@@ -15,5 +16,6 @@ urlpatterns = [
     path('<uuid:pk>/', TodoDetailView.as_view(), name='detail'),
     path('new-todo/', TodoCreateView.as_view(), name='new_todo'),
     path('<uuid:pk>/update-todo', TodoUpdateView.as_view(), name='update_todo'),
-    path('<uuid:parent_pk>/new-subtask/', SubtaskCreateView.as_view(), name='new_subtask')
+    path('<uuid:parent_pk>/new-subtask/', SubtaskCreateView.as_view(), name='new_subtask'),
+    path('<uuid:pk>/delete-todo/', TodoDeleteView.as_view(), name='delete_todo'),
 ]

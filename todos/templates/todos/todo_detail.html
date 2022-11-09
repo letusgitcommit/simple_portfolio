@@ -19,6 +19,9 @@
     <li class="nav-item">
         <a href="{% url 'todos:new_subtask' parent_pk=todo.pk %}" class="nav-link">New Subtask</a>
     </li>
+    <li class="nav-item">
+        <a href="{% url 'todos:delete_todo' pk=todo.pk %}" class="nav-link">Delete Todo</a>
+    </li>
 {% endblock %}
 
 {% block content %}
