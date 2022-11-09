@@ -16,10 +16,19 @@
     <li class="nav-item">
         <a href="{% url 'todos:update_todo' pk=todo.pk %}" class="nav-link">Update Todo</a>
     </li>
+    <li class="nav-item">
+        <a href="{% url 'todos:new_subtask' parent_pk=todo.pk %}" class="nav-link">New Subtask</a>
+    </li>
 {% endblock %}
 
 {% block content %}
     <h2>Todo Detail</h2>
     <hr />
     {{ todo.text }}
+    {% if todo.subtasks.all %}
+        <hr />
+    {% endif %}
+    {% for subtask in todo.subtasks.all %}
+        <p><a href="{% url "todos:detail" pk=subtask.pk %}">{{ subtask }}</a></p>
+    {% endfor %}
 {% endblock %}

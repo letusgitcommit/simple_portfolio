@@ -16,6 +16,7 @@ class Todo(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+        related_name='subtasks'
     )
     created_timestamp = models.DateTimeField(auto_now_add=True)
     modified_timestamp = models.DateTimeField(auto_now=True)

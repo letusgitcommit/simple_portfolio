@@ -1,5 +1,6 @@
 from django import forms
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -11,7 +12,7 @@ class TodoListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'todos'
 
     def get_queryset(self):
-        return Todo.objects.filter(user=self.request.user)
+        return Todo.objects.filter(user=self.request.user).filter(parent_task=None)
 
 
 class TodoDetailView(LoginRequiredMixin, generic.DetailView):
@@ -44,6 +45,31 @@ class TodoUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_queryset(self):
         return Todo.objects.filter(user=self.request.user)
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['text'].widget = forms.TextInput()
+        return form
+
+
+class SubtaskCreateView(LoginRequiredMixin, generic.CreateView):
+    form_class = TodoCreateModelForm
+    template_name = 'todos/todo_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.parent_task = get_object_or_404(
+            Todo.objects.filter(user=self.request.user),
+            pk=kwargs.get('parent_pk')
+        )
+        self.extra_context = {'parent_task': self.parent_task}
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.parent_task = self.parent_task
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
