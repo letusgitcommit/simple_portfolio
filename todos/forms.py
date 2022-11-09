@@ -19,3 +19,7 @@ class TodoCreateModelForm(forms.ModelForm):
         custom_submit.field_classes = 'btn btn-success'
         self.helper.add_input(custom_submit)
 
+
+class TodoUpdateModelForm(TodoCreateModelForm):
+    class Meta(TodoCreateModelForm.Meta):
+        fields = ['text', 'complete']

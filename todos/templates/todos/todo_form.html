@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+
+{% block title %}New Todo{% endblock %}
+
+{% block extra_nav %}
+    {% if 'update' in request.path %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'todos:detail' pk=todo.pk %}">Back to Todo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'todos:update_todo' pk=todo.pk %}">Update Todo</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'todos:new_todo' %}">New Todo</a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if 'update' in request.path %}
+        <h2>Update Todo</h2>
+    {% else %}
+        <h2>New Todo</h2>
+    {% endif %}
+    <hr />
+    {% crispy form %}
+{% endblock %}

@@ -21,7 +21,7 @@ class Todo(models.Model):
     modified_timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.text[:15] + '...'
+        return self.text if len(self.text) < 15 else self.text[:15] + '...'
 
     def get_absolute_url(self):
         return reverse('todos:detail', kwargs={'pk': self.pk})

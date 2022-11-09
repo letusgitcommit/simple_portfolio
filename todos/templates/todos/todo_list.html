@@ -9,6 +9,12 @@
     </li>
 {% endblock %}
 
+{% block extra_nav %}
+    <li class="nav-item">
+        <a href="{% url 'todos:new_todo' %}" class="nav-link">New Todo</a>
+    </li>
+{% endblock %}
+
 {% block content %}
     <h2>Todo List</h2>
     <hr />
