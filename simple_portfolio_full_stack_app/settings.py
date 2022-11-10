@@ -11,7 +11,7 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['polar-caverns-93984.herokuapp.com', '127.0.0.1', 'professionalcodingservices.com']
 
 INSTALLED_APPS = [
     # custom
