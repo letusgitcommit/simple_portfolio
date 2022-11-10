@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'crispy_bootstrap5',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
