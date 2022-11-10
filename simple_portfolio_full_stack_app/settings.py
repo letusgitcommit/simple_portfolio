@@ -120,6 +120,12 @@ if env.bool('SECURE', default=True):
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = env.str('DJANGO_EMAIL_HOST')
+EMAIL_HOST_USER = env.str('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('DJANGO_EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env.str('DJANGO_EMAIL_PORT')
+EMAIL_USE_TLS = env.str('DJANGO_EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL = 'dev@professionalcodingservices.com'
 
 LOGIN_REDIRECT_URL = "pages:home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "pages:home"
@@ -130,5 +136,5 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
