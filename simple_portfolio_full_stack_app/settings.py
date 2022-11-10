@@ -119,12 +119,13 @@ if env.bool('SECURE', default=True):
     SESSION_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env.str('DJANGO_EMAIL_HOST')
-EMAIL_HOST_USER = env.str('DJANGO_EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env.str('DJANGO_EMAIL_HOST_PASSWORD')
-EMAIL_PORT = env.str('DJANGO_EMAIL_PORT')
-EMAIL_USE_TLS = env.str('DJANGO_EMAIL_USE_TLS')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = env('DJANGO_EMAIL_HOST')
+EMAIL_HOST_USER = env('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env('DJANGO_EMAIL_PORT')
+EMAIL_USE_TLS = env('DJANGO_EMAIL_USE_TLS')
 DEFAULT_FROM_EMAIL = 'dev@professionalcodingservices.com'
 
 LOGIN_REDIRECT_URL = "pages:home"

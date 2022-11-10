@@ -1,0 +1,12 @@
+{% load account %}
+{% block content %}
+{% user_display user as user_display %}
+Hi {{ user_display }}! Thanks for signing up. After following the link to confirm your email address, you should have
+full access to the very simple todo crud application that I built. If you have any issues accessing, feel free to drop
+me a line at dev@professionalcodingservices.com.
+
+All the Best,
+David V.
+
+{{ activate_url }}
+{% endblock %}
