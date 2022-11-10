@@ -46,6 +46,8 @@ oauthlib==3.2.2
     # via requests-oauthlib
 packaging==21.3
     # via marshmallow
+psycopg2-binary==2.9.5
+    # via -r requirements.in
 pycparser==2.21
     # via cffi
 pyjwt[crypto]==2.6.0
@@ -68,3 +70,5 @@ tzdata==2022.6
     # via django
 urllib3==1.26.12
     # via requests
+whitenoise==6.2.0
+    # via -r requirements.in
