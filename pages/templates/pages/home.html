@@ -6,9 +6,11 @@
     <li class="nav-item">
         <a class="nav-link active" href="{% url 'pages:home' %}">Home</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'todos:list' %}">Todo App</a>
-    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'todos:list' %}">Todo App</a>
+        </li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -26,12 +28,20 @@
         Great thanks to Will Vincent for putting out <em>Django for Professionals</em>, which was a major guide to the
         beginning of my development journey with Django. Here is a link to his
         <a href="https://wsvincent.com/">website</a>
-        If you are looking for a guide to full-stack development with Django and Python. I definitely would recommend
-        his Django guides to start with.
+        If you are looking for a guide to full-stack development with Django and Python, I definitely would recommend
+        his Django books to start with.
     </p>
     <p>
         Major reason for requiring sign up: I don't plan on perusing users todos, and, therefore, to limit exposure of possible
         trolling profanity, segregating user interactions from others seemed like the best course of action.
+    </p>
+    <p>
+        If you would like to use the todo app without signing up, which is totally reasonable, feel free to login with
+        "anonymoususer@example.com" with the password "password1". The sign up workflow includes a verification email.
+        So, mostly, the sign up is meant to segregate content and show my ability to generate emails through an API.
+    </p>
+    <p>
+        All the Best! — David V.
     </p>
 
 {% endblock %}
