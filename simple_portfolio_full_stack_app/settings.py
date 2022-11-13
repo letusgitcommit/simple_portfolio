@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'whitenoise.runserver_nostatic',
+    'rest_framework',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -143,3 +144,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # Set to AllowAny for now for the sake of initial development
+        'rest_framework.permissions.AllowAny'
+    ]
+}
