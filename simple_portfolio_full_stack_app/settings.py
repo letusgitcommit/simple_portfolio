@@ -23,12 +23,12 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'todos.apps.TodosConfig',
     # third party
+    'rest_framework',
     'allauth',
     'allauth.account',
     'crispy_forms',
     'crispy_bootstrap5',
     'whitenoise.runserver_nostatic',
-    'rest_framework',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,8 +124,8 @@ if env.bool('SECURE', default=True):
     SESSION_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = env('DJANGO_EMAIL_HOST')
 EMAIL_HOST_USER = env('DJANGO_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD')
@@ -147,6 +147,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         # Set to AllowAny for now for the sake of initial development
-        'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
