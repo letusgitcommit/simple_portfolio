@@ -15,7 +15,9 @@ charset-normalizer==2.1.1
 crispy-bootstrap5==0.7
     # via -r requirements.in
 cryptography==38.0.3
-    # via pyjwt
+    # via
+    #   django-rest-knox
+    #   pyjwt
 defusedxml==0.7.1
     # via python3-openid
 dj-database-url==1.0.0
@@ -28,6 +30,7 @@ django==4.1.3
     #   crispy-bootstrap5
     #   dj-database-url
     #   django-allauth
+    #   django-rest-knox
     #   djangorestframework
 django-allauth==0.51.0
     # via -r requirements.in
@@ -37,8 +40,12 @@ django-crispy-forms==1.14.0
     # via
     #   -r requirements.in
     #   crispy-bootstrap5
-djangorestframework==3.14.0
+django-rest-knox==4.2.0
     # via -r requirements.in
+djangorestframework==3.14.0
+    # via
+    #   -r requirements.in
+    #   django-rest-knox
 environs[django]==9.5.0
     # via -r requirements.in
 gunicorn==20.1.0

@@ -23,12 +23,13 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'todos.apps.TodosConfig',
     # third party
-    'rest_framework',
     'allauth',
     'allauth.account',
     'crispy_forms',
     'crispy_bootstrap5',
     'whitenoise.runserver_nostatic',
+    'rest_framework',
+    'knox',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -146,10 +147,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # Set to AllowAny for now for the sake of initial development
         'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication'
     ]
 }

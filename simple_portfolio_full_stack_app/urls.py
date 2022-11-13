@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts.views import CustomLoginView
 
 urlpatterns = [
     path('portfolio-admin/', admin.site.urls),
@@ -22,4 +23,6 @@ urlpatterns = [
     path('todos/', include('todos.urls')),
     path('', include('pages.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/v1/auth/login', CustomLoginView.as_view()),
+    path('api/v1/auth/', include('knox.urls')),
 ]
