@@ -17,7 +17,10 @@ ALLOWED_HOSTS = [
     'www.professionalcodingservices.com',
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://classy-sunflower-8109ec.netlify.app',
+]
 
 INSTALLED_APPS = [
     # custom
