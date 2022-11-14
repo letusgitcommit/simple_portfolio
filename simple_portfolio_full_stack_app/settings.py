@@ -17,6 +17,8 @@ ALLOWED_HOSTS = [
     'www.professionalcodingservices.com',
 ]
 
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+
 INSTALLED_APPS = [
     # custom
     'accounts.apps.AccountsConfig',
@@ -30,6 +32,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'rest_framework',
     'knox',
+    'corsheaders',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
