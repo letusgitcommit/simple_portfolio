@@ -91,7 +91,7 @@ class TodoDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TodoAPIModelViewSet(ModelViewSet):
 
     def get_queryset(self):
-        return Todo.objects.filter(user=self.request.user)
+        return Todo.objects.filter(user=self.request.user).filter(parent_task=None)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
