@@ -17,6 +17,13 @@ class UpdateTodoSerializer(serializers.ModelSerializer):
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        fields = '__all__'
-        read_only_fields = ['user', 'parent_task']
+        fields = [
+            'id',
+            'text',
+            'complete',
+            'user',
+            'created_timestamp',
+            'modified_timestamp',
+        ]
+        read_only_fields = ['user']
 
