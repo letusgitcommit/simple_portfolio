@@ -5,9 +5,11 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from rest_framework.viewsets import ModelViewSet
+
 from .forms import TodoCreateModelForm, TodoUpdateModelForm
 from .models import Todo
-
+from .serializers import TodoSerializer, NewTodoSerializer, UpdateTodoSerializer
 
 class TodoListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'todos'
@@ -84,3 +86,20 @@ class TodoDeleteView(LoginRequiredMixin, generic.DeleteView):
 
     def get_queryset(self):
         return Todo.objects.filter(user=self.request.user)
+
+
+class TodoAPIModelViewSet(ModelViewSet):
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user).filter(parent_task=None)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return TodoSerializer
+        elif self.request.method == 'POST':
+            return NewTodoSerializer
+        else:
+            return UpdateTodoSerializer

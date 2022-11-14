@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+
+from rest_framework.routers import DefaultRouter
 
 from .views import (
     TodoListView,
@@ -7,9 +9,13 @@ from .views import (
     TodoUpdateView,
     SubtaskCreateView,
     TodoDeleteView,
+    TodoAPIModelViewSet
 )
 
 app_name = 'todos'
+
+router = DefaultRouter()
+router.register('v1', TodoAPIModelViewSet, basename='todo')
 
 urlpatterns = [
     path('', TodoListView.as_view(), name='list'),
@@ -18,4 +24,5 @@ urlpatterns = [
     path('<uuid:pk>/update-todo', TodoUpdateView.as_view(), name='update_todo'),
     path('<uuid:parent_pk>/new-subtask/', SubtaskCreateView.as_view(), name='new_subtask'),
     path('<uuid:pk>/delete-todo/', TodoDeleteView.as_view(), name='delete_todo'),
+    path('api/', include(router.urls)),
 ]
