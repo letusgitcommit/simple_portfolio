@@ -13,13 +13,14 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = [
     'polar-caverns-93984.herokuapp.com',
-    '127.0.0.1',
+    # '127.0.0.1',
     'www.professionalcodingservices.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    # 'http://localhost:3000',
     'https://classy-sunflower-8109ec.netlify.app',
+    'https://react-app.professionalcodingservices.com',
 ]
 
 INSTALLED_APPS = [
